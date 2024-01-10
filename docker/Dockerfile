@@ -1,4 +1,4 @@
-FROM python:latest
+FROM#python:latest
 
 ENV LANG en_US.UTF-8
 
@@ -6,7 +6,7 @@ ARG USERNAME=nerd
 ARG USER_UID
 ARG USER_GID
 
-# Check for mandatory build arguments
+! Check for mandatory build arguments
 RUN : "${USER_UID:?Build argument needs to be set and non-empty.}" && \
     : "${USER_GID:?Build argument needs to be set and non-empty.}"
 
@@ -58,4 +58,4 @@ COPY jupyter_notebook_config.py /home/$USERNAME/.jupyter/jupyter_notebook_config
 WORKDIR /notebooks
 
 EXPOSE 8888
-CMD ["/start_jupyter_lab.sh" ]
+CMD ["/start_jupyter_lab.sh" ] 
